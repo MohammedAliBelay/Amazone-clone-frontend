@@ -1,0 +1,243 @@
+// Importing React core and necessary packages
+import React from "react";
+
+// Importing icons for UI elements
+import { CiLocationOn } from "react-icons/ci";
+import { BsSearch } from "react-icons/bs";
+import { BiCart } from "react-icons/bi";
+
+// Importing modular CSS for scoped styling
+import style from "./Header.module.css";
+
+// Importing LowerHeader component (secondary navigation bar)
+import LowerHeader from "./LowerHeader";
+
+// Importing Link for client-side routing
+import { Link } from "react-router-dom";
+
+// Importing useContext to access global state
+import { useContext } from "react";
+
+// Importing global state context
+import { DataContext } from "../DataProvider/DataProvider.jsx";
+
+// Importing Firebase authentication module
+import { auth } from "../../Utility/firebase.js";
+
+function Header() {
+  // Accessing global state and dispatch method from context
+  const { state} = useContext(DataContext);
+
+  // Destructuring user and basket from global state
+  const { user, basket } = state;
+
+  // Calculating total number of items in the basket
+  const totalItems = basket?.reduce((sum, item) => sum + item.amount, 0);
+
+  //to make first character of user name cappital
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+  return (
+    // Main header wrapper with fixed position
+    <section className={style.fixed_header}>
+      <section>
+        {/* Top header container */}
+        <div className={style.header_container}>
+          {/* Left side: Logo and delivery location */}
+          <div className={style.logo_container}>
+            {/* Amazon logo with home link */}
+            <Link to="/">
+              <img
+                src="https://pngimg.com/uploads/amazon/small/amazon_PNG11.png"
+                alt="Amazon logo"
+              />
+            </Link>
+
+            {/* Delivery location with location icon */}
+            <div className={style.delivery}>
+              <span>
+                <CiLocationOn />
+              </span>
+              <div>
+                <p>Delivered to</p>
+                <span>Ethiopia</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Center: Search bar */}
+          <div className={style.search}>
+            {/* Category dropdown */}
+            <select name="" id="">
+              <option value="All">All</option>
+            </select>
+
+            {/* Text input for search */}
+            <input type="text" placeholder="Search products" />
+
+            {/* Search icon */}
+            <BsSearch size={35} />
+          </div>
+
+          {/* Right side: Language, Auth, Orders, and Cart */}
+          <div className={style.order_container}>
+            {/* Language selector with flag */}
+            <div className={`${style.language} ${style.combined_hover}`}>
+              <img
+                src="https://uk.usembassy.gov/wp-content/uploads/sites/204/2025/03/US_Flag_Color_72DPI_750x450.jpg"
+                alt="USA Flag"
+              />
+              <select name="" id="">
+                <option value="">EN</option>
+              </select>
+            </div>
+
+            {/* Sign in/out block */}
+            <Link to={!user && "/auth"} className={style.account}>
+              <div>
+                {user ? (
+                  <>
+                    {/* Greet logged-in user by name */}
+                    {/* <p>Hello {user.email?.split("@")[0]}</p> */}
+                    <p>Hello, {capitalize(user.email?.split("@")[0])}</p>
+                    {/* Sign out button */}
+                    <span onClick={() => auth.signOut()}>Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                    {/* Sign in prompt for guests */}
+                    <p> Sign In</p>
+                    <span>Accounts and Lists</span>
+                  </>
+                )}
+              </div>
+            </Link>
+
+            {/* Orders section */}
+            <Link to="/orders" className={style.orders}>
+              <div>
+                <p>Returns</p>
+                <span>& Orders</span>
+              </div>
+            </Link>
+
+            {/* Shopping cart with total item count */}
+            <Link to={"/cart"} className={style.cart}>
+              <BiCart size={25} />
+              <span>{totalItems}</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Lower header for additional navigation or links */}
+        <LowerHeader />
+      </section>
+    </section>
+  );
+}
+
+export default Header;
+
+// // Importing icons for UI elements
+// import { CiLocationOn } from "react-icons/ci";
+// import { BsSearch } from "react-icons/bs";
+// import { BiCart } from "react-icons/bi";
+// // Importing modular CSS for scoped styling
+// import "./Header.css";
+// // Importing LowerHeader component (secondary navigation bar)
+// import LowerHeader from "./LowerHeader";
+// // Importing Link for client-side routing
+// import { Link } from "react-router-dom";
+// // Importing useContext to access global state
+// import { useContext } from "react";
+// // Importing global state context
+// import { DataContext } from "../DataProvider/DataProvider.jsx";
+// // Importing Firebase authentication module
+// import { auth } from "../../Utility/firebase.js";
+
+// function Header() {
+//   // utilize the DataContext to access user and basket state(from the global state)
+//   const { state } = useContext(DataContext);
+//   const { user, basket } = state;
+//   const totalItems = basket?.reduce((sum, item) => sum + item.amount, 0);
+
+//   return (
+//     <section className="fixed_header">
+//       <section>
+//         <div className="header_container">
+//           <div className="logo_container">
+//             {/* logo */}
+//             <Link to="/">
+//               <img
+//                 src="https://pngimg.com/uploads/amazon/small/amazon_PNG11.png"
+//                 alt="Amazon logo"
+//               />
+//             </Link>
+//             {/* Delivery */}
+//             <div className="delivery">
+//               <span>
+//                 <CiLocationOn />
+//               </span>
+//               <div>
+//                 <p>Delivered to</p>
+//                 <span>Ethiopia</span>
+//               </div>
+//             </div>
+//           </div>
+//           <div className="search">
+//             {/* search */}
+//             <select name="" id="">
+//               <option value="All">All</option>
+//             </select>
+//             <input type="text" name="" id="" placeholder="Search products" />
+//             <BsSearch size={25} />
+//             {/* icon */}
+//           </div>
+//           {/* Right side link */}
+//           <div className="order_container">
+//             <div className={`${"language"} ${"combined_hover"}`}>
+//               <img
+//                 src="https://image.shutterstock.com/image-vector/usa-flag-icons-vector-set-260nw-2491312125.jpg"
+//                 alt=""
+//               />
+//               <select name="" id="">
+//                 <option value="">EN</option>
+//               </select>
+//             </div>
+//             {/* Sign-in / Sign-out: using firebase auth */}
+//             <Link to={!user && "/auth"}>
+//               <div>
+//                 {user ? (
+//                   <>
+//                     <p>Hello {user.email?.split("@")[0]}</p>
+//                     <span onClick={() => auth.signOut()}>SignOut</span>
+//                   </>
+//                 ) : (
+//                   <>
+//                     <p> Sign In</p>
+//                     <span>Accounts and Lists</span>
+//                   </>
+//                 )}
+//               </div>
+//             </Link>
+//             {/* orders */}
+//             <Link to="/orders" className={"orders"}>
+//               <div>
+//                 <p>returns</p>
+//                 <span>& Orders</span>
+//               </div>
+//             </Link>
+//             {/* Carts */}
+//             <Link to={"/cart"} className={"cart"}>
+//               <BiCart size={25} />
+//               <span>{totalItems}</span>
+//             </Link>
+//           </div>
+//         </div>
+//         <LowerHeader />
+//       </section>
+//     </section>
+//   );
+// }
+
+// export default Header;
