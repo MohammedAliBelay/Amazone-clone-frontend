@@ -3,6 +3,7 @@
 import { createContext, useReducer } from "react";
 
 // Creating a global context to share state across the app
+// eslint-disable-next-line react-refresh/only-export-components
 export const DataContext = createContext();
 
 // Creating a provider component to wrap around the app's component tree

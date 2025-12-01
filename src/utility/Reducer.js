@@ -14,6 +14,7 @@ export const reducer = (state, action) => {
     // Add an item to the basket, or increase its amount if already present
     case Type.ADD_TO_BASKET:
       // Check if the item is already in the basket
+      // eslint-disable-next-line no-case-declarations
       const existingItem = state.basket.find( (item) => item.id === action.item.id);
 
       if (existingItem) {

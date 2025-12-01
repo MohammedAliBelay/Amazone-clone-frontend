@@ -19,14 +19,14 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 // Importing global state context
-import { DataContext } from "../DataProvider/DataProvider.jsx";
+import { DataContext } from "../../components/DataProvider/DataProvider.jsx";
 
 // Importing Firebase authentication module
 import { auth } from "../../Utility/firebase.js";
 
 function Header() {
   // Accessing global state and dispatch method from context
-  const { state} = useContext(DataContext);
+  const { state } = useContext(DataContext);
 
   // Destructuring user and basket from global state
   const { user, basket } = state;
