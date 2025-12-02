@@ -21,7 +21,7 @@ import {
 } from "firebase/auth";
 
 // Global Context
-import { DataContext } from "../../Components/DataProvider/DataProvider";
+import { DataContext } from "../../components/DataProvider/DataProvider.jsx";
 
 // Password visibility icons
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -170,7 +170,7 @@ function Auth() {
             ) : loading.signUp ? (
               <ClipLoader color="red" size={20} />
             ) : (
-              "Create Account"
+              "Create your Amazone Account"
             )}
           </button>
         </form>
@@ -194,7 +194,7 @@ function Auth() {
               fontSize: "1rem",
             }}
           >
-            {isSignIn ? "Create one" : "Sign In"}
+            {isSignIn ? "Create your Amazone Account" : "Sign In Now"}
           </button>
         </p>
 

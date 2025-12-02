@@ -17,13 +17,11 @@ function Product() {
   // State to hold the fetched products data
   const [products, setProducts] = useState();
 
-  // State to track loading status; initially false (not loading)
-  const [loading, setLoading] = useState(false);
+  // State to track loading status; initially true (loading)
+  const [loading, setLoading] = useState(true);
 
   // useEffect runs once on component mount to fetch product data from API
   useEffect(() => {
-    setLoading(true); // Start loading before making the API call
-
     axios
       .get("https://fakestoreapi.com/products") // Fetch products from Fake Store API
       .then((res) => {
