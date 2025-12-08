@@ -87,8 +87,9 @@ function Header() {
                 src="https://uk.usembassy.gov/wp-content/uploads/sites/204/2025/03/US_Flag_Color_72DPI_750x450.jpg"
                 alt="USA Flag"
               />
-              <select name="" id="">
-                <option value="">EN</option>
+              <select id="lang">
+                <option value="EN">English</option>
+                <option value="AM">አማርኛ</option>
               </select>
             </div>
 

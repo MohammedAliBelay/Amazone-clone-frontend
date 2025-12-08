@@ -2,7 +2,7 @@
 import { useState, useContext } from "react";
 
 // Importing CSS module
-import "./Auth.css";
+import styles from "./SignIn.module.css";
 
 // React Router utilities
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -88,7 +88,7 @@ function Auth() {
   };
 
   return (
-    <section className="login">
+    <section className={styles.login}>
       <Link to="/">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
@@ -96,7 +96,7 @@ function Auth() {
         />
       </Link>
 
-      <div className="login_Container">
+      <div className={styles.login_Container}>
         <h1>{isSignIn ? "Sign In" : "Create Account"}</h1>
         {/* Optional message passed from navigation state */}
         {navStateData?.state?.message && (
@@ -158,7 +158,7 @@ function Auth() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="logInButton"
+            className={styles.logInButton}
             disabled={isSignIn ? loading.signIn : loading.signUp}
           >
             {isSignIn ? (
@@ -177,7 +177,8 @@ function Auth() {
 
         <p>
           By {isSignIn ? "signing in" : "creating an account"}, you agree to the
-          AMAZON FAKE CLONE Conditions of Use & Sale.
+          AMAZON FAKE CLONE Conditions of Use & Sale. Please see our Privacy
+          Notice, our Cookies Notice and our Interest-Based Ads Notice.
         </p>
 
         {/* Toggle Between Sign In / Sign Up */}
@@ -198,7 +199,7 @@ function Auth() {
           </button>
         </p>
 
-        {error && <small className="error">{error}</small>}
+        {error && <small className={styles.error}>{error}</small>}
       </div>
     </section>
   );
