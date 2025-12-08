@@ -5,7 +5,7 @@ import "./Cart.css";
 // Importing layout wrapper component
 import LayOut from "../../components/layout/Layout.jsx";
 // Importing global state (context) from DataProvider
-import { DataContext } from "../../components/dataProvider/DataProvider.jsx";
+import { DataContext } from "../../components/DataProvider/DataProvider.jsx";
 // Importing reusable product display card
 import ProductCard from "../../components/product/ProductCard.jsx";
 // Importing utility component for formatting currency
