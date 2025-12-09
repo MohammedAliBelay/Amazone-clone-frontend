@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./Pages/Landing/Landing";
-import Payment from "./Pages/Payment/Payment";
+import Payment from "./pages/Payment/Payment";
 import Orders from "./pages/Order/Order.jsx";
 import Cart from "./Pages/Cart/Cart";
 import Results from "./Pages/Results/Results";
@@ -13,7 +13,7 @@ import { ProtectedRoute } from "./components/protedtedRoute/ProtectedRoute";
 
 function Routing() {
   const stripePromise = loadStripe(
-    "pk_test_51RP0HjDH396XUSKXqAuYrwJDiXeq5EvwUB1lpU3m1F3yoRClh90qsYbYTQ6pZAhvrCsd2Hk3zkQxc20ycyDdnkvU002p2PCg6o"
+    "pk_test_51Sc4Hp3a3OyxZp6d8DW4u6Jjzt1oww3CxkobpZmmJbBOFpn08yLMki9xlrrKOzxFFSnjxJviiEqOntfeFt9BmIo400f8qVv953"
   );
   return (
     <Router>
@@ -45,7 +45,7 @@ function Routing() {
           }
         />
         <Route path="/category/:categoryName" element={<Results />} />
-        <Route path="/products/:productID" element={<ProductDetail/>} />
+        <Route path="/products/:productID" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>

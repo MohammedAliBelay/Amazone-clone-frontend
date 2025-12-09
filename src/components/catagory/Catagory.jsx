@@ -23,19 +23,3 @@ const Categories = () => {
 
 // Exporting the component so it can be used in other parts of the app
 export default Categories;
-
-// import { categoryImage } from "./categoryImage";
-// import CategoryCard from "./CategoryCard";
-// import classes from "./Category.module.css";
-
-// const Categories = () => {
-//   return (
-//     <section className={classes.category_container}>
-//       {categoryImage?.map((item) => {
-//        return <CategoryCard data={item} key={item.name} />;
-//       })}
-//     </section>
-//   );
-// };
-
-// export default Categories;

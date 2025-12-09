@@ -7,7 +7,7 @@ import LayOut from "../../components/layout/Layout.jsx";
 // Importing Firebase Firestore database instance
 import { db } from "../../Utility/firebase";
 // Importing global data context for accessing state
-import { DataContext } from "../../Components/DataProvider/DataProvider";
+import { DataContext } from "../../components/DataProvider/DataProvider";
 // Importing reusable product card component to display order items
 import ProductCard from "../../components/product/ProductCard.jsx";
 // Importing Firestore methods for querying and listening to data
@@ -29,10 +29,11 @@ function Orders() {
 
   // useEffect to fetch and listen to user's order data from Firestore
   useEffect(() => {
-    // If no user is logged in, clear the orders
+    // If no user is logged in, clear the orders asynchronously to avoid cascading renders
     if (!user) {
-      setOrders([]);
-      return;
+      // Clear orders on next tick and return cleanup to cancel if effect re-runs quickly
+      const t = setTimeout(() => setOrders([]), 0);
+      return () => clearTimeout(t);
     }
 
     // Reference to the user's "orders" subcollection in Firestore

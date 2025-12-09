@@ -17,6 +17,4 @@ const CurrencyFormat = ({ amount }) => {
   // Displaying the formatted amount inside a <div>
   return <div>{formattedAmount}</div>;
 };
-
-// Exporting the component for use in other parts of the app
 export default CurrencyFormat;
