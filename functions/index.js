@@ -1,5 +1,5 @@
+// with finctions accessing payment gateway stripe
 const express = require("express");
-// const { setGlobalOptions } = require("firebase-functions");
 const { onRequest } = require("firebase-functions/https");
 const logger = require("firebase-functions/logger");
 const cors = require("cors");
@@ -19,20 +19,26 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/payments/create", async (req, res) => {
+app.post("/payment/create", async (req, res) => {
   const total = Number(req.query.total);
-  console.log("Payment request received for amount:", total);
-  try {
+  if (total > 0) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: total,
-      currency: "ETB",
+      currency: "usd",
     });
-    return res.status(201).json({ clientSecret: paymentIntent.client_secret, });
-  }
-  catch (error) { 
-    console.error("Stripe Error:", error);
-    return res.status(500).json({ error: error.message });
+    // console.log(paymentIntent);
+    res.status(201).json({ clientsecret: paymentIntent.client_secret });
+  } else {
+    res.status(403).json({ error: "Invalid total amount" });
   }
 });
 
 exports.api = onRequest(app);
+
+
+
+
+
+
+
+
