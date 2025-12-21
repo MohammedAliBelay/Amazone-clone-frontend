@@ -6,7 +6,7 @@ import "./Results.css";
 import LayOut from "../../components/layout/Layout";
 import ProductCard from "../../components/product/ProductCard";
 import Loader from "../../components/loader/Loader"; // ✅ Missing import
-import { productUrl } from "../../Api/endPoints";
+import { productUrl } from "../../Api/Endpoints";
 
 function Results() {
   const { categoryName } = useParams(); // Get category from URL
