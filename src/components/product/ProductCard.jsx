@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 // React hook to access global state context
 import { useContext } from "react";
 // Importing global data context for state management
-import { DataContext } from "../DataProvider/DataProvider.jsx";
+import { DataContext } from "../dataProvider/DataProvider.jsx";
 // Importing action types constants for dispatching actions
 import { Type } from "../../utility/action.type.js";
 

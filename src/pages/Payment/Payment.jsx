@@ -5,7 +5,7 @@ import "./Payment.css";
 // Layout wrapper for consistent app UI
 import LayOut from "../../components/layout/Layout";
 // Import global state context
-import { DataContext } from "../../components/DataProvider/DataProvider.jsx";
+import { DataContext } from "../../components/dataProvider/DataProvider.jsx";
 
 // Reusable card component to display basket items
 import ProductCard from "../../components/product/ProductCard";
@@ -14,7 +14,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 // Component for formatting currency
 import CurrencyFormat from "../../components/currencyFormat/CurrentFormate";
 // Axios instance for API calls
-import { axiosInstance } from "../../Api/axios";
+import { axiosInstance } from "../../Api/Axios.jsx";
 // Spinner for loading state
 import { ClipLoader } from "react-spinners";
 // Firebase Firestore database import
