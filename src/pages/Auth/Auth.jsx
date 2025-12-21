@@ -21,7 +21,7 @@ import {
 } from "firebase/auth";
 
 // Global Context
-import { DataContext } from "../../components/DataProvider/DataProvider.jsx";
+import { DataContext } from "../../components/dataProvider/DataProvider.jsx";
 
 // Password visibility icons
 import { FaEye, FaEyeSlash } from "react-icons/fa";
