@@ -8,8 +8,6 @@ import { getFirestore } from "firebase/firestore"; // Provides access to Firesto
 // These variables are defined in your .env file and accessed via Vite's import.meta.env
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY, // API key to identify Firebase project
-  
-
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN, // Domain used for Firebase Authentication
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID, // Unique ID of the Firebase project
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET, // Cloud Storage bucket for storing files
@@ -17,6 +15,10 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID, // Unique ID for the web app
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID, // ID for Google Analytics tracking
 };
+
+// Log project ID for debugging (moved outside the object)
+// console.log("Config Check:", import.meta.env.VITE_FIREBASE_PROJECT_ID);
+
 // console.log("API Key:", import.meta.env.VITE_FIREBASE_API_KEY);
 // Initialize Firebase app instance using the configuration object
 const app = initializeApp(firebaseConfig);
