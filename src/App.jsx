@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Routing from "./Routing.jsx";
 import { DataContext } from "./components/dataProvider/DataProvider.jsx";
 import { Type } from "./utility/action.type.js";
-import { auth } from "./Utility/firebase.js";
+import { auth } from "./utility/firebase.js";
 
 function App() {
   const [count, setCount] = useState(0); // Example local state (currently unused)
