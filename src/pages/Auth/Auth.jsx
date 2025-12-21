@@ -8,7 +8,7 @@ import styles from "./SignIn.module.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 // Firebase Auth
-import { auth } from "../../Utility/firebase";
+import { auth } from "../../utility/Firebase";
 
 // Spinner
 import { ClipLoader } from "react-spinners";

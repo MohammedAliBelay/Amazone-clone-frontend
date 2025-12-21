@@ -8,7 +8,7 @@ function Landing() {
   return (
     <LayOut>
       <Carousel />
-      <Category/>
+      <Category />
       <Product />
     </LayOut>
   );
