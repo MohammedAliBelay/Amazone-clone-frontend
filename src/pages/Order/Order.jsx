@@ -7,7 +7,7 @@ import LayOut from "../../components/layout/Layout.jsx";
 // Importing Firebase Firestore database instance
 import { db } from "../../utility/Firebase";
 // Importing global data context for accessing state
-import { DataContext } from "../../components/DataProvider/DataProvider";
+import { DataContext } from "../../components/dataProvider/DataProvider";
 // Importing reusable product card component to display order items
 import ProductCard from "../../components/product/ProductCard.jsx";
 // Importing Firestore methods for querying and listening to data
