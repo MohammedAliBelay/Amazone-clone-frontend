@@ -1,12 +1,13 @@
-// with finctions accessing payment gateway stripe
-const express = require("express");
-const { onRequest } = require("firebase-functions/https");
-const logger = require("firebase-functions/logger");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const { Message } = require("firebase-functions/pubsub");
+// with functions accessing payment gateway stripe
+/* global process */
+import express from "express";
+import { onRequest } from "firebase-functions/https";
+// import logger from "firebase-functions/logger";
+import cors from "cors";
+import dotenv from "dotenv";
 dotenv.config();
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 app.use(cors({ origin: true }));
@@ -33,12 +34,4 @@ app.post("/payment/create", async (req, res) => {
   }
 });
 
-exports.api = onRequest(app);
-
-
-
-
-
-
-
-
+export const api = onRequest(app);
