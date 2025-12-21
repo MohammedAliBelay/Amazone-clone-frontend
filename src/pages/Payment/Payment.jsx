@@ -18,7 +18,7 @@ import { axiosInstance } from "../../Api/axios";
 // Spinner for loading state
 import { ClipLoader } from "react-spinners";
 // Firebase Firestore database import
-import { db } from "../../Utility/firebase";
+import { db } from "../../utility/Firebase";
 // Firestore methods to set order documents
 import { doc, collection, setDoc } from "firebase/firestore";
 // React Router hook for redirection
