@@ -1,6 +1,6 @@
 // Import core Firebase SDK functions needed to initialize and use Firebase services
 import { initializeApp } from "firebase/app"; // Initializes the Firebase app with provided config
-import { getAnalytics } from "firebase/analytics"; // Enables Google Analytics for Firebase
+// import { getAnalytics } from "firebase/analytics"; // Enables Google Analytics for Firebase
 import { getAuth } from "firebase/auth"; // Provides Firebase Authentication functionality
 import { getFirestore } from "firebase/firestore"; // Provides access to Firestore (NoSQL database)
 
@@ -25,7 +25,7 @@ const app = initializeApp(firebaseConfig);
 
 // Enable Firebase Analytics for usage tracking (optional)
 // eslint-disable-next-line no-unused-vars
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 // Export initialized Firebase Authentication and Firestore instances
 export const auth = getAuth(app); // Used for user sign-in, sign-up, and auth state management
