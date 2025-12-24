@@ -24,7 +24,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Enable Firebase Analytics for usage tracking (optional)
-// eslint-disable-next-line no-unused-vars
 // const analytics = getAnalytics(app);
 
 // Export initialized Firebase Authentication and Firestore instances
