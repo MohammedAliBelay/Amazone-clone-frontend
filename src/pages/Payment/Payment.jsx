@@ -20,7 +20,7 @@ import { ClipLoader } from "react-spinners";
 // Firebase Firestore database import
 import { db } from "../../utility/Firebase";
 // Firestore methods to set order documents
-import { doc, collection, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 // React Router hook for redirection
 import { useNavigate } from "react-router-dom";
 // Action types for context dispatch
@@ -62,7 +62,6 @@ function Payment() {
       setError("Stripe has not loaded yet. Please try again.");
       return;
     }
-
     // Get the CardElement input
     const cardElement = elements.getElement(CardElement);
     if (!cardElement) {
@@ -77,7 +76,9 @@ function Payment() {
       const response = await axiosInstance.post(
         `/payment/create?total=${amountInCents}`
       );
+
       const clientSecret = response.data?.clientSecret;
+      console.log(clientSecret);
 
       if (!clientSecret) {
         setError("Failed to retrieve payment details from server.");
@@ -85,7 +86,7 @@ function Payment() {
       }
 
       // Step 2: Confirm card payment using Stripe
-      const { error, paymentIntent } = await stripe.confirmCardPayment(
+      const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(
         clientSecret,
         {
           payment_method: {
@@ -96,16 +97,24 @@ function Payment() {
           },
         }
       );
+      if (stripeError) {
+        console.error("Stripe error:", stripeError);
+        setError(stripeError.message);
+        setProcessing(false);
+        return;
+      }
+      console.log(paymentIntent);
 
       // Step 3: Save order in Firestore if payment is successful
-      await setDoc(
-        doc(collection(db, "user", user.uid, "orders"), paymentIntent.id),
-        {
-          basket: basket,
-          amount: paymentIntent.amount,
-          created: paymentIntent.created,
-        }
-      );
+      console.log("User UID:", user?.uid);
+
+      await setDoc(doc(db, "user", user.uid, "orders", paymentIntent.id), {
+        basket: basket,
+        amount: paymentIntent.amount,
+        created: paymentIntent.created,
+      });
+
+console.log("Payment succeeded, navigating...");
 
       // Step 4: Clear basket and navigate to orders
       dispatch({ type: Type.EMPTY_BASKET });
