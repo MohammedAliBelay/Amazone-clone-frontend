@@ -78,7 +78,7 @@ function Payment() {
       );
 
       const clientSecret = response.data?.clientSecret;
-      console.log(clientSecret);
+      // console.log(clientSecret);
 
       if (!clientSecret) {
         setError("Failed to retrieve payment details from server.");
@@ -103,10 +103,10 @@ function Payment() {
         setProcessing(false);
         return;
       }
-      console.log(paymentIntent);
+      // console.log(paymentIntent);
 
       // Step 3: Save order in Firestore if payment is successful
-      console.log("User UID:", user?.uid);
+      // console.log("User UID:", user?.uid);
 
       await setDoc(doc(db, "user", user.uid, "orders", paymentIntent.id), {
         basket: basket,
@@ -114,7 +114,7 @@ function Payment() {
         created: paymentIntent.created,
       });
 
-console.log("Payment succeeded, navigating...");
+// console.log("Payment succeeded, navigating...");
 
       // Step 4: Clear basket and navigate to orders
       dispatch({ type: Type.EMPTY_BASKET });
